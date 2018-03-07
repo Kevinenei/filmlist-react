@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Button extends Component {
-  render() {
-    return (
-     <a className={"btn btn-" + this.props.type + ' ' + this.props.active} aria-label="Profile">
-		<i className={"mdi " + this.props.icon} aria-hidden="true"></i> {this.props.title}
-	 </a>
-    );
-  }
-}
+const Button = ({type,active,icon,children})=>
+  <a className={"btn btn-" + type + ' ' + active} aria-label="Profile">
+		<i className={"mdi " + icon} aria-hidden="true"></i> {children}
+	</a>
 
 Button.propTypes = {
   	title: PropTypes.string.isRequired,
@@ -19,9 +14,9 @@ Button.propTypes = {
  Button.defaultProps = {
  type: "primary",
  icon: null,
- active: "false"
+ active: "false",
+ children: "Texto default"
 
-
-} 
+}
 
 export default Button;
