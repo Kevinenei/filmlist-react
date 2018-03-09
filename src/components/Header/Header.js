@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBox from './components/SearchBox.js';
-
+import {Link} from 'react-router-dom';
 const Header =props=>
   <header>
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -17,7 +17,7 @@ const Header =props=>
                          <a className="nav-link" href="index.html">Home</a>
                      </li>
                      <li className="nav-item">
-                         <a className="nav-link" href="peliculas-grid.html">Peliculas</a>
+                         <Link to="/peliculas" className="nav-link">Peliculas</Link>
                      </li>
                      <li className="nav-item">
                          <a className="nav-link" href="series-grid.html">Series</a>

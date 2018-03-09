@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
+import {BrowserRouter} from 'react-router-dom'
+import {Switch,Route, Link } from 'react-router-dom';
+
 import Button from './Button.js';
 import GridItem from './GridItem.js';
 import ListItem from './ListItem.js';
 import ItemsSection from './ItemsSection.js';
 import ViewedItems from './ViewedItems.js';
 import Header from './components/Header';
+
+import E404 from './components/E404';
+
 import './App.css';
 
 class App extends Component {
@@ -12,6 +19,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <Switch>
+        <Route path="/" exact component={GridItem}/>
+        <Route path="/peliculas/" component={ViewedItems}/>
+        <Route component={E404} />
+        </Switch>
+
            <h6>Componente MyListAddButton gato</h6>
            <Button icon="mdi-heart-outline" >
              Agregar a Mi Lista
@@ -30,7 +43,7 @@ class App extends Component {
            <ListItem  titulo="hola"/>
            <ListItem  />
            <ItemsSection />
-           <ViewedItems />
+
 
 
       </div>
