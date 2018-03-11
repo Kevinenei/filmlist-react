@@ -54,7 +54,7 @@ PopularMoviesItemsSection.propTypes = {
 };
 
 PopularMoviesItemsSection.defaultProps = {
- type: GridItem
+ type: "grid"
 }
 
 

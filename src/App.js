@@ -6,9 +6,10 @@ import {Switch,Route, Link } from 'react-router-dom';
 import Button from './components/Button';
 import GridItem from './components/VistaItems/GridItem';
 import ListItem from './components/VistaItems/ListItem';
-import ItemsSection from './ItemsSection.js';
+import ItemsSection from './components/ItemsSection';
 import ViewedItems from './components/VistaItems/ViewedItems';
 import Header from './components/Header';
+import PrimaryTitle from './components/PrimaryTitle';
 import PopularMoviesItemsSection from './components/PopularMoviesItemsSection';
 
 import E404 from './components/E404';
@@ -57,11 +58,10 @@ class App extends Component {
            <h6>Componente ListItem </h6>
            <ListItem  titulo="hola"/>
            <ListItem  />
+          <PrimaryTitle>Peliculas Estreno</PrimaryTitle>
+          <PopularMoviesItemsSection items={moviesx} type="grid" />
 
-           <PopularMoviesItemsSection items={moviesx} type="grid" />
-
-
-
+          <ItemsSection title="Películas más Populares" items={moviesx}  />
       </div>
     );
   }
