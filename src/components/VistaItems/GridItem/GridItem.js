@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class GridItem extends Component {
-  render() {
-    return (
+const GridItem = ({url,img,titulo,fecha})=>
 	<article className="col-md-2">
-	<a href={this.props.url} className="grid-item">
-	    <img src={this.props.img}  alt={'pelicula de ' + this.props.titulo } className="img-fluid" />
+	<a href={url} className="grid-item">
+	    <img src={img}  alt={'pelicula de ' + titulo } className="img-fluid" />
 	    <span className="grid-item-body">
-	        <span className="grid-item-title">{this.props.titulo}</span>
-	        <span className="grid-item-date">{this.props.fecha}</span>
+	        <span className="grid-item-title">{titulo}</span>
+	        <span className="grid-item-date">{fecha}</span>
 	    </span>
 	</a>
 	</article>
-	);
-  }
 
-}
 
 GridItem.propTypes = {
   	url: PropTypes.string.isRequired,

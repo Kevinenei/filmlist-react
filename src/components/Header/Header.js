@@ -14,7 +14,7 @@ const Header =props=>
              <div className="collapse navbar-collapse" id="navbarsExample07">
                  <ul className="navbar-nav mr-auto">
                      <li className="nav-item active">
-                         <a className="nav-link" href="index.html">Home</a>
+                         <Link to="/" className="nav-link">Home</Link>
                      </li>
                      <li className="nav-item">
                          <Link to="/peliculas" className="nav-link">Peliculas</Link>

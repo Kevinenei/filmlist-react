@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter} from 'react-router-dom'
 import {Switch,Route, Link } from 'react-router-dom';
 
-import Button from './Button.js';
-import GridItem from './GridItem.js';
-import ListItem from './ListItem.js';
+import Button from './components/Button';
+import GridItem from './components/VistaItems/GridItem';
+import ListItem from './components/VistaItems/ListItem';
 import ItemsSection from './ItemsSection.js';
-import ViewedItems from './ViewedItems.js';
+import ViewedItems from './components/VistaItems/ViewedItems';
 import Header from './components/Header';
+import PopularMoviesItemsSection from './components/PopularMoviesItemsSection';
 
 import E404 from './components/E404';
 
@@ -16,11 +17,25 @@ import './App.css';
 
 class App extends Component {
   render() {
+    var moviesx = [
+       {
+       name: "Thor Ragnarok",
+       },
+       {
+       name: "Back to the Future",
+       },
+       {
+       name: "Robocop",
+       },
+      {
+       name: "Robocop",
+       },
+      ];
     return (
       <div className="App">
         <Header />
         <Switch>
-        <Route path="/" exact component={GridItem}/>
+        <Route path="/" exact component={Button}/>
         <Route path="/peliculas/" component={ViewedItems}/>
         <Route component={E404} />
         </Switch>
@@ -42,7 +57,8 @@ class App extends Component {
            <h6>Componente ListItem </h6>
            <ListItem  titulo="hola"/>
            <ListItem  />
-           <ItemsSection />
+
+           <PopularMoviesItemsSection items={moviesx} type="grid" />
 
 
 

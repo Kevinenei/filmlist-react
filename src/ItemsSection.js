@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import GridItem from './GridItem.js';
+import GridItem from './components/VistaItems/GridItem';
+
 
 class ItemsSection extends Component {
   render() {
@@ -15,15 +16,21 @@ class ItemsSection extends Component {
        },
       ];
 
-      const listarpeliculas = movies.map((x,index) =>
+      
+      if(!movies.length == 0){
+      var listarpeliculas = movies.map((x,index) =>
        <GridItem key={index} url="id5.html" img="https://image.tmdb.org/t/p/w370_and_h556_bestv2/oSLd5GYGsiGgzDPKTwQh7wamO8t.jpg" titulo={x.name} fecha="October 25, 2017"/>
       )
-         
+      }else{
+      var listarpeliculas = <div className="dimmer">No hay items en Mi Lista</div>
+      }
+
+
       return(
         <section className="items-section">
             <div className="items-section-body">
               <div className="row">
-                 { listarpeliculas }
+                 { listarpeliculas }            
               </div>
             </div>
         </section>

@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button.js';
+import Button from '../../Button';
 
-class ListItem extends Component {
-  render() {
-    return (
+
+const ListItem = ({img,titulo,texto})=>
       <div className="list-item">
         <div className="list-item-img">
-            <img src={this.props.img} alt={this.props.titulo} className="img-fluid" />
+            <img src={img} alt={titulo} className="img-fluid" />
         </div>
         <div className="list-item-body">
-            <h3 className="list-item-title">{this.props.titulo}</h3>
+            <h3 className="list-item-title">{titulo}</h3>
             <div className="list-item-description">
-                <p>{this.props.texto}</p>
+                <p>{texto}</p>
             </div>
             <div className="list-item-actions">
-            <Button icon="mdi-heart-outline" title="Agregar a Mi Lista" />
+            <Button icon="mdi-heart-outline">Agregar a Mi Lista</Button>
             </div>
         </div>
     </div>
-    );
-  }
-}
-
 
 ListItem.propTypes = {
   img: PropTypes.string,

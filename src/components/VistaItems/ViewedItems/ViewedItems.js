@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListItem from './ListItem.js';
+import ListItem from '../ListItem';
 
 class ViewedItems extends Component {
   render() {

@@ -7,7 +7,7 @@ const Button = ({type,active,icon,children})=>
 	</a>
 
 Button.propTypes = {
-  	title: PropTypes.string.isRequired,
+  	children: PropTypes.string,
   	icon: PropTypes.string
   };
 
