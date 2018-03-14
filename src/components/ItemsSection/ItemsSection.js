@@ -1,58 +1,55 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import GridItem from '../VistaItems/GridItem';
-import ListItem from '../VistaItems/ListItem';
+import { GridItem, ListItem } from '../VistaItems';
 import PrimaryTitle from '../PrimaryTitle';
-import Loading from '../Loading';
+import Loading from './Loading';
+import Dimmer from './Dimmer';
 
-class ItemsSection extends Component {
-constructor(props){
- super(props);
- this.state = {
- title:this.props.title, 
- loading: true,
- items: [],
- type: this.props.type,
- viewAllLink:'http://google.com'
- 
- }
-}
-
-componentDidMount(){
-setTimeout(() => {
-  this.setState({ loading: false, items:this.props.items });
-}, 5000);
-}
-
-render(){
-  if(this.state.loading){
-  <Loading />
-  console.log( <Loading />);
+const ItemsSection  = (props) => {
+  var noitems = ''
+  if(props.loading){
+    var loading = <Loading/>
   }else{
-    if (this.state.type == "grid") {
-      var loading = this.state.items.map((x,index) =>
-         <GridItem key={index} url="id5.html" img="https://image.tmdb.org/t/p/w370_and_h556_bestv2/oSLd5GYGsiGgzDPKTwQh7wamO8t.jpg" titulo={x.name} fecha="October 25, 2017"/>
-         )
-    }else if (this.state.type == "list"){
-      var loading = this.state.items.map((x,index) =>
-      <ListItem key={index} img="https://image.tmdb.org/t/p/w370_and_h556_bestv2/oSLd5GYGsiGgzDPKTwQh7wamO8t.jpg" titulo={x.name} />
-      )
+    if (props.items.length === 0) {
+      var noitems = <Dimmer/>
     }else{
-      console.log("Parametro Type " + this.state.type + " invalido")
+      if (props.type == "grid") {
+        var loading = props.items.map((x,index) =>
+           <GridItem
+             key={index}
+             url="id5.html"
+             img="https://image.tmdb.org/t/p/w370_and_h556_bestv2/oSLd5GYGsiGgzDPKTwQh7wamO8t.jpg"
+             titulo={x.name}
+             fecha="October 25, 2017"
+           />
+           )
+      }else if (props.type == "list"){
+        var loading = props.items.map((x,index) =>
+        <ListItem
+          key={index}
+          img="https://image.tmdb.org/t/p/w370_and_h556_bestv2/oSLd5GYGsiGgzDPKTwQh7wamO8t.jpg"
+          titulo={x.name}
+        />
+        )
+      }else{
+        console.log("Parametro Type " + props.type + " invalido")
+      }
     }
   }
-    
+
       return(
         <section className="items-section">
-            <PrimaryTitle> {this.state.title}</PrimaryTitle>     
+            <PrimaryTitle>{props.title}</PrimaryTitle>
             <div className="items-section-body">
-              <div className="row">                        
-               {loading}    
-              </div>              
+              <div className="row">
+               {loading}
+               {noitems}
+               <Dimmer/>
+              </div>
             </div>
         </section>
       );
-  }
+
 }
 
 ItemsSection.propTypes = {

@@ -6,7 +6,7 @@ import {Switch,Route, Link } from 'react-router-dom';
 import Button from './components/Button';
 import GridItem from './components/VistaItems/GridItem';
 import ListItem from './components/VistaItems/ListItem';
-import ItemsSection from './components/ItemsSection';
+import {ItemsSection} from './components/ItemsSection';
 import ViewedItems from './components/VistaItems/ViewedItems';
 import Header from './components/Header';
 import PrimaryTitle from './components/PrimaryTitle';
@@ -16,22 +16,28 @@ import E404 from './components/E404';
 
 import './App.css';
 
+var data  = [
+   
+  ];
+
+
 class App extends Component {
+  state = {
+    moviesx: [],
+    isLoading: false
+  }
+  componentDidMount () {
+    this.setState({ isLoading: true })
+    setTimeout(() => {
+      this.setState({
+        isLoading: false,
+        moviesx: data
+      })
+    }, 5000)
+
+
+  }
   render() {
-    var moviesx = [
-       {
-       name: "Thor Ragnarok",
-       },
-       {
-       name: "Back to the Future",
-       },
-       {
-       name: "Robocop",
-       },
-      {
-       name: "Robocop",
-       },
-      ];
     return (
       <div className="App">
         <Header />
@@ -59,9 +65,18 @@ class App extends Component {
            <ListItem  titulo="hola"/>
            <ListItem  />
           <PrimaryTitle>Peliculas Estreno</PrimaryTitle>
-          <PopularMoviesItemsSection items={moviesx} type="grid" />
+          <PopularMoviesItemsSection
+            items={this.state.moviesx}
+            type="grid"
+            loading={this.state.isLoading}
+          />
 
-          <ItemsSection title="Películas más Populares" items={moviesx}  />
+          <ItemsSection
+            title="Items section pelis "
+            items={this.state.moviesx}
+            loading={this.state.isLoading}
+            viewAllLink="http://google.com"
+          />
       </div>
     );
   }

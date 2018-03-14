@@ -5,7 +5,7 @@ const PrimaryTitle = ({children})=>
  <h1>{children}</h1>
 
 PrimaryTitle.propTypes = {
-  	children: PropTypes.string
+  	children: PropTypes.any.isRequired,
   };
-
+  
 export default PrimaryTitle;
