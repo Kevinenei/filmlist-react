@@ -4,6 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import {Switch,Route, Link } from 'react-router-dom';
 
 import Home from './components/Home';
+import Movies from './components/Movies';
 import Button from './components/Button';
 import GridItem from './components/VistaItems/GridItem';
 import ListItem from './components/VistaItems/ListItem';
@@ -24,7 +25,7 @@ class App extends Component {
         <Header />
         <Switch>
         <Route path="/" exact component={Home}/>
-        <Route path="/peliculas/" component={ViewedItems}/>
+        <Route path="/peliculas/" component={Movies}/>
         <Route component={E404} />
         </Switch>
 

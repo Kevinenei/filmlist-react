@@ -4,9 +4,20 @@ import { GridItem, ListItem } from '../VistaItems';
 import PrimaryTitle from '../PrimaryTitle';
 import Loading from './Loading';
 import Dimmer from './Dimmer';
+var date ="";
+var titleitem = "";
+
+const consultaundefined = (x) => {
+   if(x.x.release_date == undefined){
+            date = x.x.first_air_date
+            titleitem = x.x.original_name
+          }else{
+            date = x.x.release_date
+            titleitem = x.x.original_title
+    }
+}
 
 const ItemsSection  = (props) => {
-console.log(props.items)
   if(props.loading){
     var loading = <Loading/>
   }else{
@@ -15,24 +26,26 @@ console.log(props.items)
     }else{
       if (props.type == "grid") {
         { loading = props.items.map((x,index) => {
-          console.log();
-           return <GridItem
-             key={index}
-             url="id5.html"
-             img={'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + {x}.x.poster_path}
-             titulo={x.title}
-             fecha={{x}.x.release_date}
-           />
-           })}
+         consultaundefined({x})
+         return <GridItem
+           key={index}
+           url="id5.html"
+           img={'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + {x}.x.poster_path}
+           titulo={titleitem}
+           fecha={date}            
+         />
+        })}
+
       }else if (props.type == "list"){
-        loading = props.items.map((x,index) =>
-        <ListItem
+        { loading = props.items.map((x,index) => {
+        consultaundefined({x})
+        return <ListItem
           key={index}
           img={'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + {x}.x.poster_path}
-          titulo={x.title}
+          titulo={titleitem}
           texto={{x}.x.overview}
         />
-        )
+        })}
       }else{
         console.log("Parametro Type " + props.type + " invalido")
       }

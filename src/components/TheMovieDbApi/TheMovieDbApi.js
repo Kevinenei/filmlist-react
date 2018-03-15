@@ -17,6 +17,17 @@ class TheMovieDbApi {
  params: {page: page}
  })
  );
+ getPopularSeries = (page = 1) => (
+ this.axios.get(`/tv/popular`, {
+ params: {page: page}
+ })
+ );
+ getCategories = (page = 1) => (
+ this.axios.get(`/genre/movie/list`, {
+ params: {page: page}
+ })
+ );
+ 
 }
 
 export default TheMovieDbApi;
