@@ -1,8 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
-const Dimmer = () =>
+const Dimmer = ({children})=>
   <div className="dimmer">
-    <p>No hay peliculas en la lista</p>
+    <p>{children}</p>
   </div>
+
+Dimmer.propTypes = {
+  	children: PropTypes.any.isRequired,
+  };
 
 export default Dimmer

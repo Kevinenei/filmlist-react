@@ -6,29 +6,31 @@ import Loading from './Loading';
 import Dimmer from './Dimmer';
 
 const ItemsSection  = (props) => {
-  var noitems = ''
+console.log(props.items)
   if(props.loading){
     var loading = <Loading/>
   }else{
-    if (props.items.length === 0) {
-      var noitems = <Dimmer/>
+    if (props.items.length == 0) {
+      var noitems = <Dimmer>No se encontraron Peliculas</Dimmer>
     }else{
       if (props.type == "grid") {
-        var loading = props.items.map((x,index) =>
-           <GridItem
+        { loading = props.items.map((x,index) => {
+          console.log();
+           return <GridItem
              key={index}
              url="id5.html"
-             img="https://image.tmdb.org/t/p/w370_and_h556_bestv2/oSLd5GYGsiGgzDPKTwQh7wamO8t.jpg"
-             titulo={x.name}
-             fecha="October 25, 2017"
+             img={'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + {x}.x.poster_path}
+             titulo={x.title}
+             fecha={{x}.x.release_date}
            />
-           )
+           })}
       }else if (props.type == "list"){
-        var loading = props.items.map((x,index) =>
+        loading = props.items.map((x,index) =>
         <ListItem
           key={index}
-          img="https://image.tmdb.org/t/p/w370_and_h556_bestv2/oSLd5GYGsiGgzDPKTwQh7wamO8t.jpg"
-          titulo={x.name}
+          img={'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + {x}.x.poster_path}
+          titulo={x.title}
+          texto={{x}.x.overview}
         />
         )
       }else{
@@ -44,7 +46,6 @@ const ItemsSection  = (props) => {
               <div className="row">
                {loading}
                {noitems}
-               <Dimmer/>
               </div>
             </div>
         </section>

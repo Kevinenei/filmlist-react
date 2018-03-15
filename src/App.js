@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter} from 'react-router-dom'
 import {Switch,Route, Link } from 'react-router-dom';
 
+import Home from './components/Home';
 import Button from './components/Button';
 import GridItem from './components/VistaItems/GridItem';
 import ListItem from './components/VistaItems/ListItem';
@@ -10,39 +11,19 @@ import {ItemsSection} from './components/ItemsSection';
 import ViewedItems from './components/VistaItems/ViewedItems';
 import Header from './components/Header';
 import PrimaryTitle from './components/PrimaryTitle';
-import PopularMoviesItemsSection from './components/PopularMoviesItemsSection';
-
+import TheMovieDbApi from './components/TheMovieDbApi';
 import E404 from './components/E404';
 
 import './App.css';
 
-var data  = [
-   
-  ];
-
 
 class App extends Component {
-  state = {
-    moviesx: [],
-    isLoading: false
-  }
-  componentDidMount () {
-    this.setState({ isLoading: true })
-    setTimeout(() => {
-      this.setState({
-        isLoading: false,
-        moviesx: data
-      })
-    }, 5000)
-
-
-  }
   render() {
     return (
       <div className="App">
         <Header />
         <Switch>
-        <Route path="/" exact component={Button}/>
+        <Route path="/" exact component={Home}/>
         <Route path="/peliculas/" component={ViewedItems}/>
         <Route component={E404} />
         </Switch>
@@ -64,19 +45,7 @@ class App extends Component {
            <h6>Componente ListItem </h6>
            <ListItem  titulo="hola"/>
            <ListItem  />
-          <PrimaryTitle>Peliculas Estreno</PrimaryTitle>
-          <PopularMoviesItemsSection
-            items={this.state.moviesx}
-            type="grid"
-            loading={this.state.isLoading}
-          />
-
-          <ItemsSection
-            title="Items section pelis "
-            items={this.state.moviesx}
-            loading={this.state.isLoading}
-            viewAllLink="http://google.com"
-          />
+       
       </div>
     );
   }
