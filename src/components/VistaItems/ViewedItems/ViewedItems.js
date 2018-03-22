@@ -19,7 +19,7 @@ class ViewedItems extends Component {
       ];
 
       let peliculasvistas = movies.filter(function(x){
-       return x.viewed == true;
+       return x.viewed;
       })
 
       const listarpeliculas = peliculasvistas.map((x,index) =>  

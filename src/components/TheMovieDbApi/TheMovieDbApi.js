@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import axios from 'axios'
 
 const API_KEY = 'b646b550ce8d5cf2d596fea24456bd8d';
@@ -24,6 +23,11 @@ class TheMovieDbApi {
  );
  getCategories = (page = 1) => (
  this.axios.get(`/genre/movie/list`, {
+ params: {page: page}
+ })
+ );
+ getCategoriesSeries = (page = 1) => (
+ this.axios.get(`/genre/tv/list`, {
  params: {page: page}
  })
  );

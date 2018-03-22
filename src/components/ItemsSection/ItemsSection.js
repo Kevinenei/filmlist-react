@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { GridItem, ListItem } from '../VistaItems';
 import PrimaryTitle from '../PrimaryTitle';
@@ -8,7 +8,7 @@ var date ="";
 var titleitem = "";
 
 const consultaundefined = (x) => {
-   if(x.x.release_date == undefined){
+   if(!x.x.release_date){
             date = x.x.first_air_date
             titleitem = x.x.original_name
           }else{
@@ -21,22 +21,23 @@ const ItemsSection  = (props) => {
   if(props.loading){
     var loading = <Loading/>
   }else{
-    if (props.items.length == 0) {
+    if (props.items.length === 0) {
       var noitems = <Dimmer>No se encontraron Peliculas</Dimmer>
     }else{
-      if (props.type == "grid") {
-        { loading = props.items.map((x,index) => {
-         consultaundefined({x})
-         return <GridItem
-           key={index}
-           url="id5.html"
-           img={'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + {x}.x.poster_path}
-           titulo={titleitem}
-           fecha={date}            
-         />
+      if (props.type === "grid") {
+        {
+          loading = props.items.map((x,index) => {
+          consultaundefined({x})
+          return <GridItem
+             key={index}
+             url="id5.html"
+             img={'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + {x}.x.poster_path}
+             titulo={titleitem}
+             fecha={date}            
+            />
         })}
 
-      }else if (props.type == "list"){
+      }else if (props.type === "list"){
         { loading = props.items.map((x,index) => {
         consultaundefined({x})
         return <ListItem

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import BarraFiltros from '../BarraFiltros';
 import PopularSeriesItemsSection from '../PopularSeriesItemsSection';
 
