@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TheMovieDbApi from '../TheMovieDbApi';
-
+import store from '../../store.js'
 var arraycategorias
 
 const getYear = () => {
@@ -84,10 +84,10 @@ class BarraFiltros extends Component{
             </select>          
         </div>
 		        <div className="filters-bar-right">
-		            <a href="peliculas-grid.html" className="btn btn-light active" aria-label="Profile">
+		            <a onClick={() => this.FiltroGrid()} className="btn btn-light active" aria-label="Profile">
 		                <i className="mdi mdi-view-grid" aria-hidden="true"></i>
 		            </a>
-		            <a href="peliculas-list.html" className="btn btn-light" aria-label="Profile">
+		            <a  onClick={() => this.FiltroList()} className="btn btn-light" aria-label="Profile">
 		                <i className="mdi mdi-view-list" aria-hidden="true"></i>
 		            </a>
 		        </div>
@@ -95,6 +95,14 @@ class BarraFiltros extends Component{
 		 </div>
     )
 	}
+  FiltroGrid(){
+    store.dispatch({
+      type:"Filtro_Grid"
+    })
+  }
+   FiltroList(){
+  console.log(this)
+  }
 }
 
 

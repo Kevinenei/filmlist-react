@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {ItemsSection} from '../ItemsSection';
 import TheMovieDbApi from '../TheMovieDbApi';
-
+import store from '../../store.js'
 this.api = new TheMovieDbApi()
 var data = []
 this.api.getPopularMovies().then(res => {
@@ -22,8 +22,12 @@ componentDidMount () {
         moviesx: data
       })
     }, 5000)
-     
   }
+  /*store.subscribe(() => {
+    this.setState({
+    type: store.getState().type
+    })
+  */
    render() {
         return(
           <ItemsSection
