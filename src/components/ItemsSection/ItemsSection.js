@@ -33,7 +33,7 @@ const ItemsSection  = (props) => {
              url="id5.html"
              img={'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + {x}.x.poster_path}
              titulo={titleitem}
-             fecha={date}            
+             fecha={date}       
             />
         })}
 

@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components'
+
+
 
 const GridItem = ({url,img,titulo,fecha})=>
-	<article className="col-md-2">
+	<ArticleStyle className="col-md-2 " >
 	<a href={url} className="grid-item">
 	    <img src={img}  alt={'pelicula de ' + titulo } className="img-fluid" />
 	    <span className="grid-item-body">
@@ -10,8 +13,19 @@ const GridItem = ({url,img,titulo,fecha})=>
 	        <span className="grid-item-date">{fecha}</span>
 	    </span>
 	</a>
-	</article>
+	</ArticleStyle>
 
+const ArticleStyle = styled.article`
+   animation: sizepopup 2s ease-in-out;  
+   @keyframes sizepopup {
+	 	0%{
+	 		opacity:0;
+	 	}
+	    100% {
+	      transform:10;
+	    }
+	  }
+`
 
 GridItem.propTypes = {
   	url: PropTypes.string.isRequired,

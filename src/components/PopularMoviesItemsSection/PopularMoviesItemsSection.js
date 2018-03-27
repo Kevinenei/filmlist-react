@@ -23,11 +23,6 @@ componentDidMount () {
       })
     }, 5000)
   }
-  /*store.subscribe(() => {
-    this.setState({
-    type: store.getState().type
-    })
-  */
    render() {
         return(
           <ItemsSection
