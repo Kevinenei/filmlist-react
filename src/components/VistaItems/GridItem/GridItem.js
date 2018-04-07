@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 
 
-const GridItem = ({url,img,titulo,fecha})=>
-	<ArticleStyle className="col-md-2 " >
+const GridItem = ({url,img,titulo,fecha,position = 0})=>
+	<ArticleStyle className="col-md-2 " style={{animationDuration: `${300 * position}ms`}}>
 	<a href={url} className="grid-item">
 	    <img src={img}  alt={'pelicula de ' + titulo } className="img-fluid" />
 	    <span className="grid-item-body">
@@ -16,7 +16,7 @@ const GridItem = ({url,img,titulo,fecha})=>
 	</ArticleStyle>
 
 const ArticleStyle = styled.article`
-   animation: sizepopup 2s ease-in-out;  
+   animation: sizepopup 2s ease-in-out;
    @keyframes sizepopup {
 	 	0%{
 	 		opacity:0;
@@ -36,5 +36,5 @@ GridItem.propTypes = {
 
  GridItem.defaultProps = {
  img: "otraurlimagennoencontrada.jpg"
-} 
+}
 export default GridItem;
